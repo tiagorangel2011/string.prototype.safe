@@ -7,13 +7,13 @@
 This is a simple library for making a string that can't be XSSed.
 Look at this example:
 ```js
-// with a good string
-> "Here's some good string".safe()
-< "Here's some good string"
+// with a string without HTML
+> "Here's a string without HTML injection".safe()
+< "Here's a string without HTML injection"
 
-// not-so-good one
-> "Some bad <img src='' onerror='alert()'> thing".safe()
-< "Some bad &lt;img src='' onerror='alert()'&gt; thing"
+// XSS/HTML injection
+> "XSS goes here: <img src='' onerror='alert()'>".safe()
+< "XSS goes here: &lt;img src='' onerror='alert()'&gt;"
 ```
 And what do we use to do this?
 ```js
