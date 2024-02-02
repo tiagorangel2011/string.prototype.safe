@@ -15,17 +15,29 @@ Look at this example:
 > "XSS goes here: <img src='' onerror='alert()'>".safe()
 < "XSS goes here: &lt;img src='' onerror='alert()'&gt;"
 ```
-And what do we use to do this?
+And what do we need to use this?
 ```js
 String.prototype.safe = function () {
-	return this.split('').join('')
-		.replace(/&/g, "&amp;")
-		.replace(/</g, "&lt;")
-		.replace(/>/g, "&gt;")
-		.replace(/"/g, "&quot;")
-		.replace(/'/g, "&#039;")
+    return this.split('').join('')
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;")
 }
 ```
-I minified this code, check it [in the safe.min.js file](https://github.com/tiagorangel2011/string.prototype.safe/blob/main/safe.min.js)
+
+Or just use a function:
+```js
+function Safe(s) {
+    return s.split('').join('')
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;")
+}
+```
+Pretty simple script, right? I minified this code, check it [in the safe.min.js file](https://github.com/tiagorangel2011/string.prototype.safe/blob/main/safe.min.js)
 Thanks for reading!
 **PS**: Copyright goes to [@ihack2712](https://support.glitch.com/t/how-to-prevent-xss/30446/22?u=tiagorangel2011)
