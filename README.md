@@ -38,6 +38,4 @@ function Safe(s) {
       .replace(/'/g, "&#039;")
 }
 ```
-Pretty simple script, right? I minified this code, check it [in the safe.min.js file](https://github.com/tiagorangel2011/string.prototype.safe/blob/main/safe.min.js)
-Thanks for reading!
-**PS**: Copyright goes to [@ihack2712](https://support.glitch.com/t/how-to-prevent-xss/30446/22?u=tiagorangel2011)
+Pretty simple script, right? This is a repackage of https://npmjs.com/package/string.prototype.safe, because why an entire npm package when you can just copy some code.
