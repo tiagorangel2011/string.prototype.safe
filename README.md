@@ -6,6 +6,7 @@
 ## First, what's this
 This is a simple library for making a string that can't be XSSed.
 Look at this example:
+
 ```js
 // with a string without HTML
 > "Here's a string without HTML injection".safe()
@@ -18,24 +19,20 @@ Look at this example:
 And what do we need to use this?
 ```js
 String.prototype.safe = function () {
+    if (typeof this == "number") {return this}
     return this.split('').join('')
-      .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;")
 }
 ```
 
-Or just use a function:
+Or use as a function:
 ```js
-function Safe(s) {
+const Safe = function (s) {
+    if (typeof s == "number") {return s}
     return s.split('').join('')
-      .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;")
 }
 ```
-Pretty simple script, right? This is a repackage of https://npmjs.com/package/string.prototype.safe, because why an entire npm package when you can just copy some code.
+It's a pretty simple script, right? This is a repackage of https://npmjs.com/package/string.prototype.safe, because why an entire npm package when you can copy some code.
